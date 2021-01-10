@@ -3,7 +3,6 @@ from flask import request
 from flask_restful import Resource
 
 from language_service.controller.common import (
-    check_authentication,
     check_language,
     get_required_field,
 )
@@ -15,8 +14,6 @@ logger = logging.getLogger("LanguageService")
 
 
 class DocumentController(Resource):
-    method_decorators = [check_authentication]
-
     def post(self, language=None):
         language, error = check_language(language)
         if error:

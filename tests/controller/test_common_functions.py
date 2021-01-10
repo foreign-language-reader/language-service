@@ -1,45 +1,11 @@
 import pytest
 from unittest.mock import MagicMock
 
-from werkzeug.exceptions import Unauthorized
 
 from language_service.controller.common import (
-    check_authentication,
     check_language,
     get_required_field,
 )
-
-
-def test_check_authentication_fails_request_with_no_token(mocker):
-    os = mocker.patch("language_service.controller.common.os")
-    os.getenv.return_value = "test_token"
-
-    request = mocker.patch("language_service.controller.common.request")
-    request.headers = {"headers": ["Content-Type", "application/json"]}
-
-    controller = MagicMock()
-    authenticated_controller = check_authentication(controller)
-
-    with pytest.raises(Unauthorized):
-        authenticated_controller(request)
-
-    controller.assert_not_called()
-
-
-def test_check_authentication_allows_request_with_valid_token(mocker):
-    os = mocker.patch("language_service.controller.common.os")
-    os.getenv.return_value = "test_token"
-
-    request = mocker.patch("language_service.controller.common.request")
-    request.headers = {"headers": ["Authentication", "test_token"]}
-
-    controller = MagicMock()
-    authenticated_controller = check_authentication(controller)
-
-    with pytest.raises(Unauthorized):
-        authenticated_controller(request)
-
-    controller.assert_not_called()
 
 
 def test_check_language(mocker):

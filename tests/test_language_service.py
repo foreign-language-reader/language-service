@@ -44,7 +44,7 @@ def get_definitions_successfully_mock(language, word):
         return [test_definition]
 
 
-def test_definitions_slingle(mocker):
+def test_definitions_single(mocker):
     get_english_definitions = mocker.patch(
         "language_service.service.definition.english.Wiktionary"
     )
@@ -58,7 +58,7 @@ def test_definitions_slingle(mocker):
 
     assert response.status == "200 OK"
     assert response.get_json() == [
-        {"examples": None, "subdefinitions": ["test"], "tag": ""}
+        {"examples": None, 'language': 'english', 'source': 'wiktionary',"subdefinitions": ["test"], "tag": "", 'token': 'test'}
     ]
 
 
@@ -77,9 +77,27 @@ def test_definitions_multiple(mocker):
     )
 
     assert response.status == "200 OK"
-    assert response.get_json() == {
-        "This": [{"examples": None, "subdefinitions": ["This"], "tag": ""}],
-        "a": [{"examples": None, "subdefinitions": ["a"], "tag": ""}],
-        "is": [{"examples": None, "subdefinitions": ["is"], "tag": ""}],
-        "test": [{"examples": None, "subdefinitions": ["test"], "tag": ""}],
-    }
+    assert response.get_json() == {'This': [{'examples': None,
+                                             'language': 'english',
+                                             'source': 'wiktionary',
+                                             'subdefinitions': ['This'],
+                                             'tag': '',
+                                             'token': 'This'}],
+                                   'a': [{'examples': None,
+                                          'language': 'english',
+                                          'source': 'wiktionary',
+                                          'subdefinitions': ['a'],
+                                          'tag': '',
+                                          'token': 'a'}],
+                                   'is': [{'examples': None,
+                                           'language': 'english',
+                                           'source': 'wiktionary',
+                                           'subdefinitions': ['is'],
+                                           'tag': '',
+                                           'token': 'is'}],
+                                   'test': [{'examples': None,
+                                             'language': 'english',
+                                             'source': 'wiktionary',
+                                             'subdefinitions': ['test'],
+                                             'tag': '',
+                                             'token': 'test'}]}
