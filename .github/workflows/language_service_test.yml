@@ -9,24 +9,32 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Move build files to root of build worker
-      run: |
-        shopt -s dotglob
-        mv language-service/* .
+    - uses: brpaz/hadolint-action@v1.3.1
+      name: Lint container image
+      with:
+        dockerfile: Dockerfile
 
     - name: Build container
-      run: docker build .
+      run: docker build . -t language
+    
+    - name: Enforce security rules
+      uses: anchore/scan-action@2.0.3
+      id: scan
+      with:
+        image: "language:latest"
+        acs-report-enable: true
+
+    - name: Upload scan report
+      if: ${{ always() }}
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: ${{ steps.scan.outputs.sarif }}
 
   test:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
-
-    - name: Move build files to root of build worker
-      run: |
-        shopt -s dotglob
-        mv language-service/* .
 
     - name: Set up Python 3.9
       uses: actions/setup-python@v1
