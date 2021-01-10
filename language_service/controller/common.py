@@ -1,35 +1,7 @@
 import logging
-import os
-from functools import wraps
 
-from flask import request
-from flask_restful import abort
-
-AUTH_TOKEN = os.getenv("AUTH_TOKEN", "local")
 SUPPORTED_LANGUAGES = ["CHINESE", "ENGLISH", "SPANISH"]
 logger = logging.getLogger("LanguageService")
-
-
-def check_authentication(method):
-    """
-    Makes sure the request contains the required authorization.
-    Pretty much makes sure it was called internally or during a test
-    """
-
-    @wraps(method)
-    def authentication_checker(*args, **kwargs):
-        logger.info("Checking request authentication.")
-
-        if (
-            "Authorization" in request.headers
-            and request.headers["Authorization"] == AUTH_TOKEN
-        ):
-            return method(*args, **kwargs)
-        else:
-            logger.info("Aborting because request is not authorized")
-            abort(401)
-
-    return authentication_checker
 
 
 def check_language(language):

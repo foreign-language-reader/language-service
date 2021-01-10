@@ -1,10 +1,9 @@
 from collections import defaultdict
-import jieba
-import jieba.posseg as parser
-from language_service.service.tag.common import is_not_punctuation
-from language_service.dto.word import Word
 
-jieba.enable_paddle()
+import jieba.posseg as parser
+
+from language_service.dto.word import Word
+from language_service.service.tag.common import is_not_punctuation
 
 part_of_speech_mapping = defaultdict(lambda: "不知道词性")
 

@@ -5,26 +5,22 @@ description = ""
 authors = ["Lucas Kjaero-Zhang <lucas@lucaskjaerozhang.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.9.1"
 
 # Web server
 gunicorn = "^20.0.4"
 flask = "^1.1.1"
-gevent = "^1.4.0"
+gevent = "^20.12.1"
 
 # REST
 flask_restful = "^0.3.8"
 marshmallow = "^3.5.1"
 
-# Persistence
-elasticsearch = "^7.6.0"
-
 # Tagging
 spacy = "^2.2.3"
-en-core-web-sm = {url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.2.0/en_core_web_sm-2.2.0.tar.gz"}
-es-core-news-sm = {url = "https://github.com/explosion/spacy-models/releases/download/es_core_news_sm-2.2.5/es_core_news_sm-2.2.5.tar.gz"}
+en-core-web-sm = {url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.1/en_core_web_sm-2.3.1.tar.gz"}
+es-core-news-sm = {url = "https://github.com/explosion/spacy-models/releases/download/es_core_news_sm-2.3.1/es_core_news_sm-2.3.1.tar.gz"}
 jieba = "^0.42.1"
-paddlepaddle-tiny = "^1.6.1"
 
 # Definitions
 wiktionaryparser = "^0.0.97"

@@ -27,10 +27,10 @@ def test_tagging(mocker):
     assert response.status == "200 OK"
 
 
-this_definition = Definition(subdefinitions=["This"])
-is_definition = Definition(subdefinitions=["is"])
-a_definition = Definition(subdefinitions=["a"])
-test_definition = Definition(subdefinitions=["test"])
+this_definition = Definition(token="This", subdefinitions=["This"])
+is_definition = Definition(token="is", subdefinitions=["is"])
+a_definition = Definition(token="a", subdefinitions=["a"])
+test_definition = Definition(token="test", subdefinitions=["test"])
 
 
 def get_definitions_successfully_mock(language, word):
@@ -44,7 +44,7 @@ def get_definitions_successfully_mock(language, word):
         return [test_definition]
 
 
-def test_definitions_slingle(mocker):
+def test_definitions_single(mocker):
     get_english_definitions = mocker.patch(
         "language_service.service.definition.english.Wiktionary"
     )
@@ -58,28 +58,12 @@ def test_definitions_slingle(mocker):
 
     assert response.status == "200 OK"
     assert response.get_json() == [
-        {"examples": None, "subdefinitions": ["test"], "tag": ""}
+        {
+            "examples": None,
+            "language": "ENGLISH",
+            "source": "WIKTIONARY",
+            "subdefinitions": ["test"],
+            "tag": "",
+            "token": "test",
+        }
     ]
-
-
-def test_definitions_multiple(mocker):
-    get_english_definitions = mocker.patch(
-        "language_service.service.definition.english.Wiktionary"
-    )
-    wiktionary = get_english_definitions.return_value
-    wiktionary.get_definitions.side_effect = get_definitions_successfully_mock
-
-    client = app.test_client()
-    response = client.post(
-        "/v1/definitions/ENGLISH/",
-        json={"words": ["This", "is", "a", "test"]},
-        headers={"Authorization": "local"},
-    )
-
-    assert response.status == "200 OK"
-    assert response.get_json() == {
-        "This": [{"examples": None, "subdefinitions": ["This"], "tag": ""}],
-        "a": [{"examples": None, "subdefinitions": ["a"], "tag": ""}],
-        "is": [{"examples": None, "subdefinitions": ["is"], "tag": ""}],
-        "test": [{"examples": None, "subdefinitions": ["test"], "tag": ""}],
-    }

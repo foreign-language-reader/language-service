@@ -39,9 +39,14 @@ def test_can_parse_definitions(mocker):
         definitions,
         [
             Definition(
-                subdefinitions=subdefinitions, examples=examples, tag=part_of_speech
+                token="something",
+                subdefinitions=subdefinitions,
+                examples=examples,
+                tag=part_of_speech,
             ),
-            Definition(subdefinitions=None, examples=None, tag="NOUN"),
+            Definition(
+                token="something", subdefinitions=None, examples=None, tag="NOUN"
+            ),
         ],
     )
 
