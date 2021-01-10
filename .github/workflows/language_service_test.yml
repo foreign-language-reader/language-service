@@ -42,9 +42,9 @@ jobs:
         python-version: 3.9
 
     - name: Install package manager
-      run: |
-        curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
-        echo "::add-path::$HOME/.poetry/bin"
+      uses: abatilo/actions-poetry@v2.1.0
+      with:
+        poetry-version: 1.1.4
 
     - name: Install dependencies
       run: poetry install
