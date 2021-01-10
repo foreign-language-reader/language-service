@@ -98,7 +98,7 @@ def test_english_tagging_no_duplicates():
             Word(token="is", tag="AUX", lemma="be"),
             Word(token="the", tag="DET", lemma="the"),
             Word(token="song", tag="NOUN", lemma="song"),
-            Word(token="that", tag="PRON", lemma="that"),
+            Word(token="that", tag="DET", lemma="that"),
             Word(token="never", tag="ADV", lemma="never"),
             Word(token="ends", tag="VERB", lemma="end"),
             Word(token="it", tag="PRON", lemma="-PRON-"),
@@ -125,7 +125,7 @@ def test_can_tag_spanish():
             Word(token="porque", tag="SCONJ", lemma="porque"),
             Word(token="estas", tag="DET", lemma="este"),
             Word(token="palabras", tag="NOUN", lemma="palabra"),
-            Word(token="fueron", tag="AUX", lemma="ser"),
+            Word(token="fueron", tag="VERB", lemma="ser"),
             Word(token="devueltas", tag="VERB", lemma="devolver"),
         ],
     )
