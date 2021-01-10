@@ -12,7 +12,6 @@ api = Api(app)
 # Configure routes
 api.add_resource(
     DefinitionController,
-    "/v1/definitions/<string:language>/",
     "/v1/definition/<string:language>/<string:word>",
 )
 api.add_resource(DocumentController, "/v1/tagging/<string:language>/document")
