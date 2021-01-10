@@ -4,8 +4,6 @@ import jieba.posseg as parser
 from language_service.service.tag.common import is_not_punctuation
 from language_service.dto.word import Word
 
-jieba.enable_paddle()
-
 part_of_speech_mapping = defaultdict(lambda: "不知道词性")
 
 part_of_speech_mapping.update(
