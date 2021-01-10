@@ -7,10 +7,10 @@ from language_service.service.definition import (
     get_definitions_for_group,
 )
 
-this_definition = Definition(subdefinitions=["This"])
-is_definition = Definition(subdefinitions=["is"])
-a_definition = Definition(subdefinitions=["a"])
-test_definition = Definition(subdefinitions=["test"])
+this_definition = Definition(token="This", subdefinitions=["This"])
+is_definition = Definition(token="is", subdefinitions=["is"])
+a_definition = Definition(token="a", subdefinitions=["a"])
+test_definition = Definition(token="test", subdefinitions=["test"])
 
 
 def get_definitions_successfully_mock(word):
