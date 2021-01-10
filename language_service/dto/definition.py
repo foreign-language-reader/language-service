@@ -3,7 +3,13 @@ from marshmallow import Schema, fields
 
 class Definition:
     def __init__(
-        self, token, source="WIKTIONARY", language="ENGLISH", subdefinitions=None, tag="", examples=None
+        self,
+        token,
+        source="WIKTIONARY",
+        language="ENGLISH",
+        subdefinitions=None,
+        tag="",
+        examples=None,
     ):
         """
         subdefinitions: The different definitions for this meaning of the word

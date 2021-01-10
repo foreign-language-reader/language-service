@@ -58,5 +58,12 @@ def test_definitions_single(mocker):
 
     assert response.status == "200 OK"
     assert response.get_json() == [
-        {"examples": None, 'language': 'ENGLISH', 'source': 'WIKTIONARY',"subdefinitions": ["test"], "tag": "", 'token': 'test'}
+        {
+            "examples": None,
+            "language": "ENGLISH",
+            "source": "WIKTIONARY",
+            "subdefinitions": ["test"],
+            "tag": "",
+            "token": "test",
+        }
     ]

@@ -26,21 +26,29 @@ test_definitions_input = [
         examples=test_second_examples,
     ),
 ]
-test_definitions_output = [{'examples': ['This is a test', 'This is a second test'],
-                            'language': 'ENGLISH',
-                            'source': 'WIKTIONARY',
-                            'subdefinitions': ['test (plural tests)', 'A challenge, trial.'],
-                            'tag': 'noun',
-                            'token': 'test'},
-                           {'examples': ['This is a third test', 'This is a fourth test'],
-                            'language': 'ENGLISH',
-                            'source': 'WIKTIONARY',
-                            'subdefinitions': ['test (third-person singular simple present tests, '
-                                               'present participle testing, simple past and past '
-                                               'participle tested)',
-                                               'To challenge.'],
-                            'tag': 'noun',
-                            'token': 'test'}]
+test_definitions_output = [
+    {
+        "examples": ["This is a test", "This is a second test"],
+        "language": "ENGLISH",
+        "source": "WIKTIONARY",
+        "subdefinitions": ["test (plural tests)", "A challenge, trial."],
+        "tag": "noun",
+        "token": "test",
+    },
+    {
+        "examples": ["This is a third test", "This is a fourth test"],
+        "language": "ENGLISH",
+        "source": "WIKTIONARY",
+        "subdefinitions": [
+            "test (third-person singular simple present tests, "
+            "present participle testing, simple past and past "
+            "participle tested)",
+            "To challenge.",
+        ],
+        "tag": "noun",
+        "token": "test",
+    },
+]
 
 experiment_subdefinitions = [
     "experiment (plural experiments)",

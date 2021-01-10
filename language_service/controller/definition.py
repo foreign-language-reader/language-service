@@ -2,20 +2,15 @@ import logging
 
 from flask_restful import Resource
 
-from language_service.controller.common import (
-    check_language,
-)
+from language_service.controller.common import check_language
 from language_service.dto.definition import DefinitionSchema
-from language_service.service.definition import (
-    get_definitions,
-)
+from language_service.service.definition import get_definitions
 
 definition_schema = DefinitionSchema(many=True)
 logger = logging.getLogger("LanguageService")
 
 
 class DefinitionController(Resource):
-
     def get(self, language=None, word=None):
         language, error = check_language(language)
         if error:
