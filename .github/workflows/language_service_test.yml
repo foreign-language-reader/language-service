@@ -1,10 +1,6 @@
 name: Test language-service
 
-on:
-  pull_request:
-    paths:
-      - "language-service/*"
-      - "language-service/**/*"
+on: [pull_request]
 
 jobs:
   build:
@@ -32,10 +28,10 @@ jobs:
         shopt -s dotglob
         mv language-service/* .
 
-    - name: Set up Python 3.7
+    - name: Set up Python 3.9
       uses: actions/setup-python@v1
       with:
-        python-version: 3.7
+        python-version: 3.9
 
     - name: Install package manager
       run: |
