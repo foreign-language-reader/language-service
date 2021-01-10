@@ -58,7 +58,7 @@ def test_definitions_single(mocker):
 
     assert response.status == "200 OK"
     assert response.get_json() == [
-        {"examples": None, 'language': 'english', 'source': 'wiktionary',"subdefinitions": ["test"], "tag": "", 'token': 'test'}
+        {"examples": None, 'language': 'ENGLISH', 'source': 'WIKTIONARY',"subdefinitions": ["test"], "tag": "", 'token': 'test'}
     ]
 
 
@@ -78,26 +78,26 @@ def test_definitions_multiple(mocker):
 
     assert response.status == "200 OK"
     assert response.get_json() == {'This': [{'examples': None,
-                                             'language': 'english',
-                                             'source': 'wiktionary',
+                                             'language': 'ENGLISH',
+                                             'source': 'WIKTIONARY',
                                              'subdefinitions': ['This'],
                                              'tag': '',
                                              'token': 'This'}],
                                    'a': [{'examples': None,
-                                          'language': 'english',
-                                          'source': 'wiktionary',
+                                          'language': 'ENGLISH',
+                                          'source': 'WIKTIONARY',
                                           'subdefinitions': ['a'],
                                           'tag': '',
                                           'token': 'a'}],
                                    'is': [{'examples': None,
-                                           'language': 'english',
-                                           'source': 'wiktionary',
+                                           'language': 'ENGLISH',
+                                           'source': 'WIKTIONARY',
                                            'subdefinitions': ['is'],
                                            'tag': '',
                                            'token': 'is'}],
                                    'test': [{'examples': None,
-                                             'language': 'english',
-                                             'source': 'wiktionary',
+                                             'language': 'ENGLISH',
+                                             'source': 'WIKTIONARY',
                                              'subdefinitions': ['test'],
                                              'tag': '',
                                              'token': 'test'}]}
