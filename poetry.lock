@@ -185,32 +185,32 @@ pipenv = ["pipenv"]
 
 [[package]]
 name = "en-core-web-sm"
-version = "2.2.0"
+version = "2.3.1"
 description = "English multi-task CNN trained on OntoNotes. Assigns context-specific token vectors, POS tags, dependency parse and named entities."
 category = "main"
 optional = false
 python-versions = "*"
 
 [package.dependencies]
-spacy = ">=2.2.0"
+spacy = ">=2.3.0,<2.4.0"
 
 [package.source]
 type = "url"
-url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.2.0/en_core_web_sm-2.2.0.tar.gz"
+url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.1/en_core_web_sm-2.3.1.tar.gz"
 [[package]]
 name = "es-core-news-sm"
-version = "2.2.5"
-description = "Spanish multi-task CNN trained on the AnCora and WikiNER corpus. Assigns context-specific token vectors, POS tags, dependency parse and named entities. Supports identification of PER, LOC, ORG and MISC entities."
+version = "2.3.1"
+description = "Spanish multi-task CNN trained on UD Spanish AnCora and WikiNER. Assigns context-specific token vectors, POS tags, dependency parses and named entities."
 category = "main"
 optional = false
 python-versions = "*"
 
 [package.dependencies]
-spacy = ">=2.2.2"
+spacy = ">=2.3.0,<2.4.0"
 
 [package.source]
 type = "url"
-url = "https://github.com/explosion/spacy-models/releases/download/es_core_news_sm-2.2.5/es_core_news_sm-2.2.5.tar.gz"
+url = "https://github.com/explosion/spacy-models/releases/download/es_core_news_sm-2.3.1/es_core_news_sm-2.3.1.tar.gz"
 [[package]]
 name = "flake8"
 version = "3.8.4"
@@ -824,7 +824,7 @@ requests = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9.1"
-content-hash = "fa590b6e809d1998a41454df4aee0775ebfb47c03fdbee5e981a37509166103e"
+content-hash = "19b3563776602164790a40384bc3960f93469602ede29e776f1d86f261e3fe44"
 
 [metadata.files]
 aniso8601 = [
