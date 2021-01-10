@@ -6,9 +6,7 @@ import logging
 from multiprocessing.context import TimeoutError as MultiprocessingTimeoutError
 from multiprocessing.dummy import Pool
 
-from language_service.service.definition.chinese import get_chinese_definitions
 from language_service.service.definition.english import get_english_definitions
-from language_service.service.definition.spanish import get_spanish_definitions
 
 logger = logging.getLogger("LanguageService.service.definition")
 
