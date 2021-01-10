@@ -19,14 +19,8 @@ def get_definitions(language, word):
     Why? Each language has different definition sources, so they'll have their
         own combination logic.
     """
-    if language == "CHINESE":
-        return get_chinese_definitions(word)
-
-    elif language == "ENGLISH":
+    if language == "ENGLISH":
         return get_english_definitions(word)
-
-    elif language == "SPANISH":
-        return get_spanish_definitions(word)
 
     else:
         raise NotImplementedError("Unknown language requested: %s")
