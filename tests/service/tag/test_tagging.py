@@ -105,7 +105,7 @@ def test_english_tagging_no_duplicates():
             Word(token="goes", tag="VERB", lemma="go"),
             Word(token="on", tag="ADP", lemma="on"),
             Word(token="and", tag="CCONJ", lemma="and"),
-            Word(token="my", tag="PRON", lemma="-PRON-"),
+            Word(token="my", tag="DET", lemma="-PRON-"),
             Word(token="friends", tag="NOUN", lemma="friend"),
         ],
     )
