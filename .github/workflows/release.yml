@@ -1,0 +1,50 @@
+name: Release and deploy
+
+on: [pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: K-Phoen/semver-release-action@master
+      name: Calculate release version
+      id: release_version
+      with:
+        release_branch: main
+        release_strategy: none
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1.1.4
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ steps.release_version.outputs.tag }}
+        release_name: ${{ github.event.pull_request.title }}
+
+    - name: Build container
+      run: docker build . -t lkjaero/language-service:latest
+    
+    - name: Enforce security rules
+      uses: anchore/scan-action@2.0.3
+      id: scan
+      with:
+        image: "lkjaero/language-service:latest"
+        acs-report-enable: true
+    
+    - name: Login to Docker Hub
+      uses: docker/login-action@v1.8.0
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    
+    - name: Push production docker image
+      run: |
+        docker tag lkjaero/language-service:latest lkjaero/language-service:${{ steps.release_version.outputs.tag }}
+        docker push lkjaero/language-service:${{ steps.release_version.outputs.tag }}
+        docker push lkjaero/language-service:latest
