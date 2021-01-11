@@ -51,3 +51,21 @@ jobs:
         docker tag lkjaero/language-service:latest lkjaero/language-service:${{ steps.release_version.outputs.tag }}
         docker push lkjaero/language-service:${{ steps.release_version.outputs.tag }}
         docker push lkjaero/language-service:latest
+
+    - name: Log into DigitalOcean
+      uses: digitalocean/action-doctl@v2.1.0
+      with:
+        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+    - name: Save DigitalOcean kubeconfig
+      run: doctl kubernetes cluster kubeconfig show foreign-language-reader > $GITHUB_WORKSPACE/.kubeconfig
+
+    - name: Update image in K8s
+      run: |
+        kubectl --kubeconfig=$GITHUB_WORKSPACE/.kubeconfig \
+          set image deployment/language-service language-service=lkjaero/language-service:${{ steps.release_version.outputs.tag }} --record
+
+    - name: Wait for deployment to finish
+      run: |
+        kubectl --kubeconfig=$GITHUB_WORKSPACE/.kubeconfig \
+          rollout status deployment/language-service
