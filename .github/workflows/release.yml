@@ -1,6 +1,9 @@
 name: Release and deploy
 
-on: [pull_request]
+on: 
+  pull_request:
+    types: [closed]
+    branches: master
 
 jobs:
   build:
