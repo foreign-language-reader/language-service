@@ -29,7 +29,10 @@ def get_required_field(request, field_name):
     """
     request_json = request.get_json()
 
-    if request_json is None or field_name not in request_json:
+    if request_json is None:
+        logger.error("Request body is empty")
+        return None, "A request is required"
+    if field_name not in request_json:
         logger.error("Required field %s was not included in request" % field_name)
         return None, "Field %s is required" % field_name
 
