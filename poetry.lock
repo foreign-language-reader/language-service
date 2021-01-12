@@ -885,8 +885,8 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 
 [metadata]
 lock-version = "1.1"
-python-versions = "3.8.5"
-content-hash = "26a7e5db23c828fa7b528c3382e40c5e3606fc66e71a484cdc01028e7b4dd139"
+python-versions = "^3.8.5"
+content-hash = "740fa6e587a81964340b0737f6256c382ff0c9fb9530aab1d6738ec17b66d7ac"
 
 [metadata.files]
 aniso8601 = [
