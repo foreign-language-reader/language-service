@@ -18,8 +18,8 @@ ENV PIP_DEFAULT_TIMEOUT=100 \
 RUN pip install "poetry==$POETRY_VERSION"
 
 RUN apt-get update && \
-        apt-get install -y --no-install-recommends apt-utils && \
-        apt-get install -y build-essential
+        apt-get install -y --no-install-recommends apt-utils=1.8.2.2 && \
+        apt-get install -y --no-install-recommends build-essential=12.6
 
 RUN python -m venv /venv
 
