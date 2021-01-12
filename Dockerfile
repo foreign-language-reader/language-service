@@ -19,7 +19,8 @@ RUN pip install "poetry==$POETRY_VERSION"
 RUN python -m venv /venv
 
 COPY pyproject.toml poetry.lock ./
-RUN poetry export --without-hashes -f requirements.txt | /venv/bin/pip install -r /dev/stdin
+RUN /venv/bin/pip install numpy==1.19.5 && \
+        poetry export --without-hashes -f requirements.txt | /venv/bin/pip install -r /dev/stdin
 
 COPY . .
 RUN poetry build && /venv/bin/pip install dist/*.whl
