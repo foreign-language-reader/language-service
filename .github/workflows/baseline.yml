@@ -1,0 +1,37 @@
+name: Baseline
+# Pull requests are judged by how they impact coverage and security.
+# This sets the baseline so we can see the impact of each individual pull request by comparing it against master.
+
+on:
+  push:
+    branches:
+      - main
+
+  # This needs a master reference, not a closed pull request reference. Keep it here.
+  security:
+    runs-on: ubuntu-latest
+    name: Security scan
+    steps:
+    - uses: actions/checkout@v2.3.4
+
+    - name: Login to Docker Hub
+      uses: docker/login-action@v1.8.0
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    - name: Build container
+      run: docker build . -t language
+
+    - name: Container security scan
+      id: scan
+      uses: anchore/scan-action@2.0.3
+      with:
+        image: "language:latest"
+        acs-report-enable: true
+
+    - name: Upload scan report
+      if: ${{ always() }}
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: ${{ steps.scan.outputs.sarif }} 
