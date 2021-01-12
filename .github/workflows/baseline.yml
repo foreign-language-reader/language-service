@@ -8,6 +8,7 @@ on:
       - main
 
   # This needs a master reference, not a closed pull request reference. Keep it here.
+jobs:
   security:
     runs-on: ubuntu-latest
     name: Security scan
