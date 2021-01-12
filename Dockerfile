@@ -1,4 +1,4 @@
-FROM python:3.9.1-slim-buster as base
+FROM python:3.8.7-slim-buster as base
 
 ENV PYTHONFAULTHANDLER=1 \
     PYTHONHASHSEED=random \
@@ -16,7 +16,15 @@ ENV PIP_DEFAULT_TIMEOUT=100 \
     POETRY_VERSION=1.1.4
 
 RUN pip install "poetry==$POETRY_VERSION"
+
+RUN apt-get update && \
+        apt-get install -y --no-install-recommends apt-utils=1.8.2.2 && \
+        apt-get install -y --no-install-recommends build-essential=12.6
+
 RUN python -m venv /venv
+
+# This is needed because pkuseg has an undeclared install time dependency for numpy. 
+RUN /venv/bin/pip install numpy==1.19.5
 
 COPY pyproject.toml poetry.lock ./
 RUN poetry export --without-hashes -f requirements.txt | /venv/bin/pip install -r /dev/stdin
