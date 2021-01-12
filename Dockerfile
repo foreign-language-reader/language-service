@@ -16,14 +16,18 @@ ENV PIP_DEFAULT_TIMEOUT=100 \
     POETRY_VERSION=1.1.4
 
 RUN pip install "poetry==$POETRY_VERSION"
-RUN python -m venv /venv
 
-COPY pyproject.toml poetry.lock ./
 RUN apt-get update && \
         apt-get install -y --no-install-recommends apt-utils && \
-        apt-get install -y build-essential && \
-        /venv/bin/pip install numpy==1.19.5 && \
-        poetry export --without-hashes -f requirements.txt | /venv/bin/pip install -r /dev/stdin
+        apt-get install -y build-essential
+
+RUN python -m venv /venv
+
+# This is needed because pkuseg has an undeclared install time dependency for numpy. 
+RUN /venv/bin/pip install numpy==1.19.5
+
+COPY pyproject.toml poetry.lock ./
+RUN poetry export --without-hashes -f requirements.txt | /venv/bin/pip install -r /dev/stdin
 
 COPY . .
 RUN poetry build && /venv/bin/pip install dist/*.whl
