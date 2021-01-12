@@ -28,6 +28,7 @@ wiktionaryparser = "^0.0.97"
 
 # Logging
 python-json-logger = "^0.1.11"
+pkuseg = "^0.0.25"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

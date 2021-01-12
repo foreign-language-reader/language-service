@@ -19,7 +19,10 @@ RUN pip install "poetry==$POETRY_VERSION"
 RUN python -m venv /venv
 
 COPY pyproject.toml poetry.lock ./
-RUN /venv/bin/pip install numpy==1.19.5 && \
+RUN apt-get update && \
+        apt-get install -y --no-install-recommends apt-utils && \
+        apt-get install -y build-essential && \
+        /venv/bin/pip install numpy==1.19.5 && \
         poetry export --without-hashes -f requirements.txt | /venv/bin/pip install -r /dev/stdin
 
 COPY . .
