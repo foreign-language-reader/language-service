@@ -1,4 +1,4 @@
-FROM python:3.8.8-slim-buster as base
+FROM python:3.9.2-alpine3.13 as base
 
 ENV PYTHONFAULTHANDLER=1 \
     PYTHONHASHSEED=random \
@@ -16,10 +16,6 @@ ENV PIP_DEFAULT_TIMEOUT=100 \
     POETRY_VERSION=1.1.4
 
 RUN pip install "poetry==$POETRY_VERSION"
-
-RUN apt-get update && \
-        apt-get install -y --no-install-recommends apt-utils=1.8.2.2 && \
-        apt-get install -y --no-install-recommends build-essential=12.6
 
 RUN python -m venv /venv
 
