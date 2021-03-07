@@ -50,14 +50,14 @@ def test_can_tag_spanish():
         words,
         [
             Word(token="La", tag="DET", lemma="el"),
-            Word(token="prueba", tag="NOUN", lemma="probar"),
+            Word(token="prueba", tag="NOUN", lemma="prueba"),
             Word(token="ha", tag="AUX", lemma="haber"),
             Word(token="pasado", tag="VERB", lemma="pasar"),
             Word(token="porque", tag="SCONJ", lemma="porque"),
             Word(token="estas", tag="DET", lemma="este"),
             Word(token="palabras", tag="NOUN", lemma="palabra"),
-            Word(token="fueron", tag="VERB", lemma="ser"),
-            Word(token="devueltas", tag="VERB", lemma="devolver"),
+            Word(token="fueron", tag="AUX", lemma="ser"),
+            Word(token="devueltas", tag="ADJ", lemma="devuelta"),
             Word(token=".", tag="PUNCT", lemma="."),
         ],
     )
