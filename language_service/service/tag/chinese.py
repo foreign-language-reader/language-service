@@ -5,6 +5,7 @@ parser = zh_core_web_sm.load()
 
 
 def tag_chinese(text):
+    # Lemmatization is not meaningful for Chinese because there are no conjugations.
     return [
-        Word(token=word.text, tag=word.pos_, lemma=word.lemma_) for word in parser(text)
+        Word(token=word.text, tag=word.pos_, lemma=word.text) for word in parser(text)
     ]
