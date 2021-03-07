@@ -12,11 +12,13 @@ def test_can_tag_chinese():
             Word(token="测试", tag="NOUN", lemma="测试"),
             Word(token="已", tag="ADV", lemma="已"),
             Word(token="通过", tag="VERB", lemma="通过"),
+            Word(token="，", tag="PUNCT", lemma="，"),
             Word(token="因为", tag="ADP", lemma="因为"),
             Word(token="返回", tag="VERB", lemma="返回"),
             Word(token="了", tag="PART", lemma="了"),
             Word(token="这些", tag="DET", lemma="这些"),
             Word(token="单词", tag="NOUN", lemma="单词"),
+            Word(token="。", tag="PUNCT", lemma="。"),
         ],
     )
 
@@ -35,6 +37,7 @@ def test_can_tag_english():
             Word(token="words", tag="NOUN", lemma="word"),
             Word(token="were", tag="AUX", lemma="be"),
             Word(token="returned", tag="VERB", lemma="return"),
+            Word(token=".", tag="PUNCT", lemma="."),
         ],
     )
 
@@ -55,6 +58,7 @@ def test_can_tag_spanish():
             Word(token="palabras", tag="NOUN", lemma="palabra"),
             Word(token="fueron", tag="VERB", lemma="ser"),
             Word(token="devueltas", tag="VERB", lemma="devolver"),
+            Word(token=".", tag="PUNCT", lemma="."),
         ],
     )
 
