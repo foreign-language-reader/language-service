@@ -21,6 +21,9 @@ RUN pip install "poetry==$POETRY_VERSION"
 
 RUN python -m venv /venv
 
+# This is needed because pkuseg has an undeclared install time dependency for numpy. 
+RUN /venv/bin/pip install numpy==1.19.5
+
 COPY pyproject.toml poetry.lock ./
 RUN poetry export --without-hashes -f requirements.txt | /venv/bin/pip install -r /dev/stdin
 
