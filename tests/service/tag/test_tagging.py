@@ -49,7 +49,7 @@ def test_can_tag_spanish():
     compare(
         words,
         [
-            Word(token="La", tag="DET", lemma="La"),
+            Word(token="La", tag="DET", lemma="el"),
             Word(token="prueba", tag="NOUN", lemma="probar"),
             Word(token="ha", tag="AUX", lemma="haber"),
             Word(token="pasado", tag="VERB", lemma="pasar"),
